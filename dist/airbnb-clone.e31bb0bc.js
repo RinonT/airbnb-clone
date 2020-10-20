@@ -28427,7 +28427,109 @@ module.exports = [{
   "beds": 3,
   "photo": "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1275&q=80"
 }];
-},{}],"Components/Stays.js":[function(require,module,exports) {
+},{}],"Components/editSearch.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = CityText;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function CityText(props) {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, props.city, props.country));
+}
+},{"react":"node_modules/react/index.js"}],"Components/Search.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Search;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _stays = _interopRequireDefault(require("../stays.json"));
+
+var _editSearch = _interopRequireDefault(require("./editSearch"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function Search() {
+  const [cities, setCities] = (0, _react.useState)([]);
+  const [text, setText] = (0, _react.useState)("");
+
+  function handleChange(e) {
+    const cityName = e.target.value;
+
+    const filteredStays = _stays.default.filter(stay => stay.city.toLowerCase().includes(cityName.toLowerCase()));
+
+    setCities(filteredStays);
+  }
+
+  function editSearch(e) {
+    const searchHtml = /*#__PURE__*/_react.default.createElement("div", {
+      className: "searchContainer"
+    }, /*#__PURE__*/_react.default.createElement("h3", null, "Edit your search"), /*#__PURE__*/_react.default.createElement("input", {
+      className: "add-country-input",
+      type: "text",
+      name: "country",
+      placeholder: "Helenski, Finland",
+      onChange: handleChange
+    }), /*#__PURE__*/_react.default.createElement("input", {
+      className: "add-guest-input",
+      type: "text",
+      name: "guests",
+      placeholder: "Add a guest"
+    }), /*#__PURE__*/_react.default.createElement("p", null, text), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+      className: "search-button",
+      type: "button"
+    }, " Search")));
+
+    _reactDom.default.render(searchHtml, document.getElementById("modal"));
+  }
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "openSearchContainer"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    className: "add-country-input",
+    type: "text",
+    name: "country",
+    placeholder: "Helenski, Finland"
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    className: "add-guest-input",
+    type: "text",
+    name: "guests",
+    placeholder: "Add a guest"
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "open-search-button",
+    type: "button",
+    onClick: editSearch
+  }, /*#__PURE__*/_react.default.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    height: "30",
+    viewBox: "0 0 24 24",
+    width: "30"
+  }, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M0 0h24v24H0z",
+    fill: "none"
+  }), /*#__PURE__*/_react.default.createElement("path", {
+    d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z",
+    fill: "#EB5757"
+  })))), /*#__PURE__*/_react.default.createElement("div", {
+    id: "modal"
+  }));
+}
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","../stays.json":"stays.json","./editSearch":"Components/editSearch.js"}],"Components/Stays.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28453,9 +28555,9 @@ function Stays(props) {
     alt: props.type
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "details"
-  }, /*#__PURE__*/_react.default.createElement("span", {
+  }, props.superHost ? /*#__PURE__*/_react.default.createElement("span", {
     className: "span"
-  }, "SUPER HOST"), /*#__PURE__*/_react.default.createElement("span", null, props.type), /*#__PURE__*/_react.default.createElement("span", null, props.beds), /*#__PURE__*/_react.default.createElement("span", {
+  }, "SUPER HOST") : "", /*#__PURE__*/_react.default.createElement("span", null, props.type), props.beds ? /*#__PURE__*/_react.default.createElement("span", null, props.beds, " beds") : "", /*#__PURE__*/_react.default.createElement("span", {
     className: "ratings"
   }, props.rating)), /*#__PURE__*/_react.default.createElement("p", {
     className: "description-pargraph"
@@ -28473,6 +28575,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _stays = _interopRequireDefault(require("../stays.json"));
 
+var _Search = _interopRequireDefault(require("./Search"));
+
 var _Stays = _interopRequireDefault(require("./Stays"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -28488,17 +28592,20 @@ function App() {
 
   const fetchStays = () => {
     setStays(_stays.default);
-    console.log(stays);
   };
 
   (0, _react.useEffect)(() => {
     fetchStays();
   }, [stays]);
-  return stays.map(stay => /*#__PURE__*/_react.default.createElement(_Stays.default, _extends({}, stay, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement(_Search.default, null)), /*#__PURE__*/_react.default.createElement("div", {
+    className: "list-container"
+  }, stays.map(stay => /*#__PURE__*/_react.default.createElement(_Stays.default, _extends({}, stay, {
     key: stay.title
-  })));
+  })))));
 }
-},{"react":"node_modules/react/index.js","../stays.json":"stays.json","./Stays":"Components/Stays.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../stays.json":"stays.json","./Search":"Components/Search.js","./Stays":"Components/Stays.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28538,7 +28645,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55920" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49853" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

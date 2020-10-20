@@ -10,9 +10,9 @@ export default function Stays(props) {
                 <div className="description">
                     <img src={props.photo} alt={props.type} />
                     <div className="details">
-                        <span className="span">SUPER HOST</span>
+                        { props.superHost ? <span className="span">SUPER HOST</span> : ""}
                         <span>{props.type}</span>
-                        <span>{props.beds}</span>
+                        {props.beds ? <span>{props.beds} beds</span>: ""}
                         <span className="ratings">{props.rating}</span>
                     </div>
                     <p className="description-pargraph">{props.title}</p>
