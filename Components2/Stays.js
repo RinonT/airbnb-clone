@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Stays(props) {
-   
     return(
         <article className="container">
                 <header className="article-header">

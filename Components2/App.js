@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Stays from '../stays.json';
 import Search from "./Search"
+import SearchSelect from "./SearchSelect"
 import Stay from "./Stays";
 
 export default function App() {
     const [stays, setStays] = useState([]);
-
+     
     const fetchStays = () => {
         setStays(Stays); 
     }
@@ -20,10 +21,15 @@ export default function App() {
             <Search />
         </div>
         <div className="list-container">
-        {stays.map(stay =>
+
+    { 
+        stays.map(stay =>
                 <Stay {...stay} key={stay.title}/>
-            )}
+            )
+
+        }
         </div>
         </>
     )
 }
+ 

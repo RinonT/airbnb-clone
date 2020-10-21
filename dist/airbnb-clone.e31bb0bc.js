@@ -28427,20 +28427,74 @@ module.exports = [{
   "beds": 3,
   "photo": "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1275&q=80"
 }];
-},{}],"Components/editSearch.js":[function(require,module,exports) {
+},{}],"Components/CardComponent.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = CityText;
+exports.default = CardComponent;
 
 var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function CityText(props) {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, props.city, props.country));
+function CardComponent({
+  beds,
+  city,
+  maxGuests,
+  photo,
+  rating,
+  title,
+  type,
+  country,
+  superHost
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "card--city"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: photo
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "room-desc"
+  }, /*#__PURE__*/_react.default.createElement("div", null, superHost && /*#__PURE__*/_react.default.createElement("p", null, "superhost"), /*#__PURE__*/_react.default.createElement("small", null, type, ".", beds, " ", beds, "beds")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("small", null, rating))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "card-title"
+  }, title));
+}
+},{"react":"node_modules/react/index.js"}],"Components/AddGuestsButton.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ButtonAddGuests;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ButtonAddGuests(props) {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: props.increment
+  }, "+"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: props.decrement
+  }, "-"), /*#__PURE__*/_react.default.createElement("p", null));
+}
+},{"react":"node_modules/react/index.js"}],"Components/SearchButton.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = SearchButtonComponent;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function SearchButtonComponent(props) {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("label", null, "I am the search button", /*#__PURE__*/_react.default.createElement("input", null)));
 }
 },{"react":"node_modules/react/index.js"}],"Components/Search.js":[function(require,module,exports) {
 "use strict";
@@ -28448,122 +28502,112 @@ function CityText(props) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = Search;
+exports.default = SearchComponent;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
-var _reactDom = _interopRequireDefault(require("react-dom"));
+var _AddGuestsButton = _interopRequireDefault(require("./AddGuestsButton"));
 
-var _stays = _interopRequireDefault(require("../stays.json"));
-
-var _editSearch = _interopRequireDefault(require("./editSearch"));
+var _SearchButton = _interopRequireDefault(require("./SearchButton"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function Search() {
-  const [cities, setCities] = (0, _react.useState)([]);
-  const [text, setText] = (0, _react.useState)("");
-
-  function handleChange(e) {
-    const cityName = e.target.value;
-
-    const filteredStays = _stays.default.filter(stay => stay.city.toLowerCase().includes(cityName.toLowerCase()));
-
-    setCities(filteredStays);
-  }
-
-  function editSearch(e) {
-    const searchHtml = /*#__PURE__*/_react.default.createElement("div", {
-      className: "searchContainer"
-    }, /*#__PURE__*/_react.default.createElement("h3", null, "Edit your search"), /*#__PURE__*/_react.default.createElement("input", {
-      className: "add-country-input",
-      type: "text",
-      name: "country",
-      placeholder: "Helenski, Finland",
-      onChange: handleChange
-    }), /*#__PURE__*/_react.default.createElement("input", {
-      className: "add-guest-input",
-      type: "text",
-      name: "guests",
-      placeholder: "Add a guest"
-    }), /*#__PURE__*/_react.default.createElement("p", null, text), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
-      className: "search-button",
-      type: "button"
-    }, " Search")));
-
-    _reactDom.default.render(searchHtml, document.getElementById("modal"));
-  }
-
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "openSearchContainer"
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    className: "add-country-input",
-    type: "text",
-    name: "country",
-    placeholder: "Helenski, Finland"
-  }), /*#__PURE__*/_react.default.createElement("input", {
-    className: "add-guest-input",
-    type: "text",
-    name: "guests",
-    placeholder: "Add a guest"
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    className: "open-search-button",
-    type: "button",
-    onClick: editSearch
-  }, /*#__PURE__*/_react.default.createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    height: "30",
-    viewBox: "0 0 24 24",
-    width: "30"
-  }, /*#__PURE__*/_react.default.createElement("path", {
-    d: "M0 0h24v24H0z",
-    fill: "none"
-  }), /*#__PURE__*/_react.default.createElement("path", {
-    d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z",
-    fill: "#EB5757"
-  })))), /*#__PURE__*/_react.default.createElement("div", {
-    id: "modal"
-  }));
+function SearchComponent(props) {
+  console.log(props);
+  return /*#__PURE__*/_react.default.createElement("form", {
+    className: "search-component"
+  }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "location", /*#__PURE__*/_react.default.createElement("select", {
+    onChange: props.handeChange
+  }, /*#__PURE__*/_react.default.createElement("option", {
+    value: ""
+  }, "----Chose a town---"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "helsinki"
+  }, "Helsinki, Finland"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "turku"
+  }, "Turku, Finland"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "oulu"
+  }, "Oulu, Finland"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "vaasa"
+  }, "Vaasa, Finland"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("details", null, /*#__PURE__*/_react.default.createElement("summary", null, "HelloHelloHelloHello"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "adult"), /*#__PURE__*/_react.default.createElement("small", null, "Age 13 or above"), /*#__PURE__*/_react.default.createElement(_AddGuestsButton.default, {
+    increment: props.increment,
+    decrement: props.decrement
+  }), /*#__PURE__*/_react.default.createElement("p", null, props.adult), console.log(props.adult)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Children"), /*#__PURE__*/_react.default.createElement("small", null, "Age 2 - 12"), /*#__PURE__*/_react.default.createElement(_AddGuestsButton.default, {
+    increment: props.increment,
+    decrement: props.decrement
+  }), /*#__PURE__*/_react.default.createElement("p", null, props.children))))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_SearchButton.default, null))));
 }
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","../stays.json":"stays.json","./editSearch":"Components/editSearch.js"}],"Components/Stays.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./AddGuestsButton":"Components/AddGuestsButton.js","./SearchButton":"Components/SearchButton.js"}],"Components/FormSearch.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = Stays;
+exports.default = FormComponent;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _Search = _interopRequireDefault(require("./Search"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Stays(props) {
-  return /*#__PURE__*/_react.default.createElement("article", {
-    className: "container"
-  }, /*#__PURE__*/_react.default.createElement("header", {
-    className: "article-header"
-  }, /*#__PURE__*/_react.default.createElement("h2", {
-    className: "heading"
-  }, "Stay in ", props.country)), /*#__PURE__*/_react.default.createElement("div", {
-    className: "description"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: props.photo,
-    alt: props.type
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "details"
-  }, props.superHost ? /*#__PURE__*/_react.default.createElement("span", {
-    className: "span"
-  }, "SUPER HOST") : "", /*#__PURE__*/_react.default.createElement("span", null, props.type), props.beds ? /*#__PURE__*/_react.default.createElement("span", null, props.beds, " beds") : "", /*#__PURE__*/_react.default.createElement("span", {
-    className: "ratings"
-  }, props.rating)), /*#__PURE__*/_react.default.createElement("p", {
-    className: "description-pargraph"
-  }, props.title)));
+function FormComponent(props) {
+  return /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "fieldset"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Helsinki, finland"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: "btn add"
+  }, "Add guests"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fa fa-search"
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    className: "open",
+    type: "checkbox"
+  }), /*#__PURE__*/_react.default.createElement(_Search.default, {
+    handeChange: props.handeChange,
+    increment: props.increment,
+    decrement: props.decrement,
+    adult: props.adult,
+    children: props.children
+  })));
 }
-},{"react":"node_modules/react/index.js"}],"Components/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Search":"Components/Search.js"}],"node_modules/random-id/index.js":[function(require,module,exports) {
+
+var possibilities = {
+  lowerCased: 'abcdefghijklmnopqrstuvwxyz',
+  capitals: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  numbers: '0123456789',
+  special: '~!@#$%^&()_+-={}[];\','
+};
+
+function randomId(len, pattern) {
+  if (!len) len = 30;
+  if (!pattern) pattern = 'aA0';
+
+  var chars = '';
+
+  pattern.split('').forEach((a) => {
+    if (!isNaN(parseInt(a))) {
+      chars += possibilities.numbers;
+    } else if (/[a-z]/.test(a)) {
+      chars += possibilities.lowerCased;
+    } else if (/[A-Z]/.test(a)) {
+      chars += possibilities.capitals;
+    } else {
+      chars += possibilities.special;
+    }
+  });
+
+  var result = '';
+
+  for (var i = 0; i < len; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length)); 
+  }
+
+  return result;
+}
+
+module.exports = randomId;
+
+},{}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28573,11 +28617,13 @@ exports.default = App;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _stays = _interopRequireDefault(require("../stays.json"));
+var _stays = _interopRequireDefault(require("./stays.json"));
 
-var _Search = _interopRequireDefault(require("./Search"));
+var _CardComponent = _interopRequireDefault(require("./Components/CardComponent"));
 
-var _Stays = _interopRequireDefault(require("./Stays"));
+var _FormSearch = _interopRequireDefault(require("./Components/FormSearch"));
+
+var _randomId = _interopRequireDefault(require("random-id"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28588,36 +28634,59 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function App() {
-  const [stays, setStays] = (0, _react.useState)([]);
+  const [towns, setTowns] = (0, _react.useState)(_stays.default);
 
-  const fetchStays = () => {
-    setStays(_stays.default);
-  };
+  function handeChange(e) {
+    setTowns(_stays.default.filter(town => {
+      return town.city.toLocaleLowerCase() === e.target.value;
+    }));
+  }
 
-  (0, _react.useEffect)(() => {
-    fetchStays();
-  }, [stays]);
+  const [adultGuests, setAdultGuests] = (0, _react.useState)(0);
+  const [childrenGuests, setChildrenGuests] = (0, _react.useState)(0);
+
+  function decrement() {
+    setAdultGuests(prev => prev - 1);
+  }
+
+  function increment() {
+    setChildrenGuests(prev => prev + 1);
+  }
+
+  const guests = adultGuests + childrenGuests;
+  const maxGuests = towns.filter(town => {
+    return town.maxGuests > guests;
+  });
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/_react.default.createElement(_Search.default, null)), /*#__PURE__*/_react.default.createElement("div", {
-    className: "list-container"
-  }, stays.map(stay => /*#__PURE__*/_react.default.createElement(_Stays.default, _extends({}, stay, {
-    key: stay.title
-  })))));
+    className: "form--header"
+  }, /*#__PURE__*/_react.default.createElement(_FormSearch.default, {
+    stays: _stays.default,
+    handeChange: handeChange,
+    increment: increment,
+    decrement: decrement,
+    adult: adultGuests,
+    children: childrenGuests
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "card--container"
+  }, maxGuests.map(stay => {
+    return /*#__PURE__*/_react.default.createElement(_CardComponent.default, _extends({
+      key: (0, _randomId.default)()
+    }, stay));
+  })));
 }
-},{"react":"node_modules/react/index.js","../stays.json":"stays.json","./Search":"Components/Search.js","./Stays":"Components/Stays.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./stays.json":"stays.json","./Components/CardComponent":"Components/CardComponent.js","./Components/FormSearch":"Components/FormSearch.js","random-id":"node_modules/random-id/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _App = _interopRequireDefault(require("./Components/App"));
+var _App = _interopRequireDefault(require("./App"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById("root"));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Components/App":"Components/App.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -28645,7 +28714,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49853" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51304" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
