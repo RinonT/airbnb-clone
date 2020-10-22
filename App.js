@@ -2,10 +2,8 @@ import React, { useState} from 'react'
 import stays from './stays.json'
 import StayComponent from './Components/StayComponent' 
 import FormComponent from './Components/FormSearch' 
-import randomId from "random-id"
-
+import randomId from "random-id" 
 export default function App () {
-
   const [cities, setcities] = useState(stays);
   const [adultGuests, setAdultGuests] = useState(0);
   const [childrenGuests, setChildrenGuests] = useState(0);
