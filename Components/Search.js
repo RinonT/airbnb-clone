@@ -1,15 +1,12 @@
-import React from 'react'
-import ButtonAddGuests from "./AddGuestsButton"
-import SearchButtonComponent from "./SearchButton"
+import React from 'react'  
 
-export default function SearchComponent (props) {
-  console.log(props);
+export default function SearchComponent (props) { 
   return (
     <form className="search-component">
       <fieldset>
-        <label>location
-          <select onChange={props.handeChange}>
-            <option value="">----Chose a town---</option>
+        <label> 
+          <select onChange={props.handleChange} size="5">
+            <option value="">Select a city</option>
             <option value="helsinki">Helsinki, Finland</option>
             <option value="turku">Turku, Finland</option>
             <option value="oulu">Oulu, Finland</option>
@@ -18,32 +15,28 @@ export default function SearchComponent (props) {
         </label>
         <div>
           <details>
-            <summary>HelloHelloHelloHello</summary>
+            <summary>Add guests
+              <p>4 Guests</p>
+            </summary>
             <div>
-              <div>
-                <p>adult</p>
-                <small>Age 13 or above</small>
-                <ButtonAddGuests 
-                  increment={props.increment}
-                  decrement={props.decrement}
-                />
-                <p>{props.adult}</p>
-                {console.log(props.adult)}
+              <div className="adultsNumbers">
+                <p>adults</p>
+                <span>Age 13 or above</span>
+                <button type="button" onClick={props.decrementAdults}>-</button>
+                <span>{props.adults}</span>
+                <button type="button" onClick={props.incrementAdults}>+</button>
               </div>
-              <div>
+              <div className="childrenNumbers">
                 <p>Children</p>
-                <small>Age 2 - 12</small>
-                <ButtonAddGuests 
-                  increment={props.increment}
-                  decrement={props.decrement}
-                />
-                <p>{props.children}</p>
+                <span>Age 2 - 12</span>
+                <button type="button" onClick={props.decrementChildren}>-</button>
+                <span>{props.children}</span>
+                <button type="button" onClick={props.incrementChildren}>+</button>
               </div>
             </div>
           </details>
         </div>
-        <div>
-          <SearchButtonComponent />
+        <div> 
         </div>
       </fieldset>
     </form>

@@ -28427,74 +28427,40 @@ module.exports = [{
   "beds": 3,
   "photo": "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1275&q=80"
 }];
-},{}],"Components/CardComponent.js":[function(require,module,exports) {
+},{}],"Components/StayComponent.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = CardComponent;
+exports.default = StayComponent;
 
 var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function CardComponent({
+function StayComponent({
   beds,
-  city,
-  maxGuests,
   photo,
   rating,
   title,
   type,
-  country,
   superHost
 }) {
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "card--city"
+    className: "description card--city"
   }, /*#__PURE__*/_react.default.createElement("img", {
-    src: photo
+    src: photo,
+    alt: type
   }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "room-desc"
-  }, /*#__PURE__*/_react.default.createElement("div", null, superHost && /*#__PURE__*/_react.default.createElement("p", null, "superhost"), /*#__PURE__*/_react.default.createElement("small", null, type, ".", beds, " ", beds, "beds")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("small", null, rating))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "card-title"
+    className: "details"
+  }, superHost ? /*#__PURE__*/_react.default.createElement("span", {
+    className: "span"
+  }, "SUPER HOST") : "", /*#__PURE__*/_react.default.createElement("span", null, type), beds ? /*#__PURE__*/_react.default.createElement("span", null, beds, " beds") : "", /*#__PURE__*/_react.default.createElement("span", {
+    className: "ratings"
+  }, rating)), /*#__PURE__*/_react.default.createElement("p", {
+    className: "description-pargraph"
   }, title));
-}
-},{"react":"node_modules/react/index.js"}],"Components/AddGuestsButton.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = ButtonAddGuests;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function ButtonAddGuests(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: props.increment
-  }, "+"), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: props.decrement
-  }, "-"), /*#__PURE__*/_react.default.createElement("p", null));
-}
-},{"react":"node_modules/react/index.js"}],"Components/SearchButton.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = SearchButtonComponent;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function SearchButtonComponent(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("label", null, "I am the search button", /*#__PURE__*/_react.default.createElement("input", null)));
 }
 },{"react":"node_modules/react/index.js"}],"Components/Search.js":[function(require,module,exports) {
 "use strict";
@@ -28506,21 +28472,17 @@ exports.default = SearchComponent;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _AddGuestsButton = _interopRequireDefault(require("./AddGuestsButton"));
-
-var _SearchButton = _interopRequireDefault(require("./SearchButton"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function SearchComponent(props) {
-  console.log(props);
   return /*#__PURE__*/_react.default.createElement("form", {
     className: "search-component"
-  }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "location", /*#__PURE__*/_react.default.createElement("select", {
-    onChange: props.handeChange
+  }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, /*#__PURE__*/_react.default.createElement("select", {
+    onChange: props.handleChange,
+    size: "5"
   }, /*#__PURE__*/_react.default.createElement("option", {
     value: ""
-  }, "----Chose a town---"), /*#__PURE__*/_react.default.createElement("option", {
+  }, "Select a city"), /*#__PURE__*/_react.default.createElement("option", {
     value: "helsinki"
   }, "Helsinki, Finland"), /*#__PURE__*/_react.default.createElement("option", {
     value: "turku"
@@ -28528,15 +28490,25 @@ function SearchComponent(props) {
     value: "oulu"
   }, "Oulu, Finland"), /*#__PURE__*/_react.default.createElement("option", {
     value: "vaasa"
-  }, "Vaasa, Finland"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("details", null, /*#__PURE__*/_react.default.createElement("summary", null, "HelloHelloHelloHello"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "adult"), /*#__PURE__*/_react.default.createElement("small", null, "Age 13 or above"), /*#__PURE__*/_react.default.createElement(_AddGuestsButton.default, {
-    increment: props.increment,
-    decrement: props.decrement
-  }), /*#__PURE__*/_react.default.createElement("p", null, props.adult), console.log(props.adult)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Children"), /*#__PURE__*/_react.default.createElement("small", null, "Age 2 - 12"), /*#__PURE__*/_react.default.createElement(_AddGuestsButton.default, {
-    increment: props.increment,
-    decrement: props.decrement
-  }), /*#__PURE__*/_react.default.createElement("p", null, props.children))))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_SearchButton.default, null))));
+  }, "Vaasa, Finland"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("details", null, /*#__PURE__*/_react.default.createElement("summary", null, "Add guests", /*#__PURE__*/_react.default.createElement("p", null, "4 Guests")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "adultsNumbers"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "adults"), /*#__PURE__*/_react.default.createElement("span", null, "Age 13 or above"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: props.decrementAdults
+  }, "-"), /*#__PURE__*/_react.default.createElement("span", null, props.adults), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: props.incrementAdults
+  }, "+")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "childrenNumbers"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Children"), /*#__PURE__*/_react.default.createElement("span", null, "Age 2 - 12"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: props.decrementChildren
+  }, "-"), /*#__PURE__*/_react.default.createElement("span", null, props.children), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: props.incrementChildren
+  }, "+"))))), /*#__PURE__*/_react.default.createElement("div", null)));
 }
-},{"react":"node_modules/react/index.js","./AddGuestsButton":"Components/AddGuestsButton.js","./SearchButton":"Components/SearchButton.js"}],"Components/FormSearch.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"Components/FormSearch.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28551,21 +28523,44 @@ var _Search = _interopRequireDefault(require("./Search"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function FormComponent(props) {
-  return /*#__PURE__*/_react.default.createElement("fieldset", {
-    className: "fieldset"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Helsinki, finland"), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    className: "btn add"
-  }, "Add guests"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("i", {
-    className: "fa fa-search"
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "search--container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "openSearchContainer"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    className: "add-country-input",
+    type: "text",
+    name: "country",
+    placeholder: "Helenski, Finland"
   }), /*#__PURE__*/_react.default.createElement("input", {
+    className: "add-guest-input",
+    type: "text",
+    name: "guests",
+    placeholder: "Add guests"
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "open-search-button",
+    type: "button"
+  }, /*#__PURE__*/_react.default.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    height: "30",
+    viewBox: "0 0 24 24",
+    width: "30"
+  }, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M0 0h24v24H0z",
+    fill: "none"
+  }), /*#__PURE__*/_react.default.createElement("path", {
+    d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z",
+    fill: "#EB5757"
+  })))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
     className: "open",
     type: "checkbox"
   }), /*#__PURE__*/_react.default.createElement(_Search.default, {
-    handeChange: props.handeChange,
-    increment: props.increment,
-    decrement: props.decrement,
-    adult: props.adult,
+    handleChange: props.handleChange,
+    incrementAdults: props.incrementAdults,
+    decrementAdults: props.decrementAdults,
+    incrementChildren: props.incrementChildren,
+    decrementChildren: props.decrementChildren,
+    adults: props.adults,
     children: props.children
   })));
 }
@@ -28619,7 +28614,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _stays = _interopRequireDefault(require("./stays.json"));
 
-var _CardComponent = _interopRequireDefault(require("./Components/CardComponent"));
+var _StayComponent = _interopRequireDefault(require("./Components/StayComponent"));
 
 var _FormSearch = _interopRequireDefault(require("./Components/FormSearch"));
 
@@ -28634,47 +28629,57 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function App() {
-  const [towns, setTowns] = (0, _react.useState)(_stays.default);
-
-  function handeChange(e) {
-    setTowns(_stays.default.filter(town => {
-      return town.city.toLocaleLowerCase() === e.target.value;
-    }));
-  }
-
+  const [cities, setcities] = (0, _react.useState)(_stays.default);
   const [adultGuests, setAdultGuests] = (0, _react.useState)(0);
   const [childrenGuests, setChildrenGuests] = (0, _react.useState)(0);
 
-  function decrement() {
-    setAdultGuests(prev => prev - 1);
-  }
+  const handleChange = e => {
+    const cityName = e.target.value;
 
-  function increment() {
-    setChildrenGuests(prev => prev + 1);
-  }
+    const filteredCities = _stays.default.filter(stay => stay.city.toLocaleLowerCase() == cityName);
 
-  const guests = adultGuests + childrenGuests;
-  const maxGuests = towns.filter(town => {
-    return town.maxGuests > guests;
-  });
+    setcities(filteredCities);
+  };
+
+  const decrementAdults = () => {
+    setAdultGuests(decrement => decrement - 1);
+    console.log(adultGuests);
+  };
+
+  const incrementAdults = () => {
+    setAdultGuests(increment => increment + 1);
+  };
+
+  const decrementChildren = () => {
+    setChildrenGuests(decrement => decrement - 1);
+  };
+
+  const incrementChildren = () => {
+    setChildrenGuests(increment => increment + 1);
+  };
+
+  const numberOfGuests = adultGuests + childrenGuests;
+  const maxGuests = cities.filter(stay => stay.maxGuests > numberOfGuests);
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
     className: "form--header"
   }, /*#__PURE__*/_react.default.createElement(_FormSearch.default, {
     stays: _stays.default,
-    handeChange: handeChange,
-    increment: increment,
-    decrement: decrement,
-    adult: adultGuests,
+    handleChange: handleChange,
+    incrementAdults: incrementAdults,
+    decrementAdults: decrementAdults,
+    incrementChildren: incrementChildren,
+    decrementChildren: decrementChildren,
+    adults: adultGuests,
     children: childrenGuests
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "card--container"
   }, maxGuests.map(stay => {
-    return /*#__PURE__*/_react.default.createElement(_CardComponent.default, _extends({
+    return /*#__PURE__*/_react.default.createElement(_StayComponent.default, _extends({
       key: (0, _randomId.default)()
     }, stay));
   })));
 }
-},{"react":"node_modules/react/index.js","./stays.json":"stays.json","./Components/CardComponent":"Components/CardComponent.js","./Components/FormSearch":"Components/FormSearch.js","random-id":"node_modules/random-id/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./stays.json":"stays.json","./Components/StayComponent":"Components/StayComponent.js","./Components/FormSearch":"Components/FormSearch.js","random-id":"node_modules/random-id/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28714,7 +28719,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51304" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54004" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

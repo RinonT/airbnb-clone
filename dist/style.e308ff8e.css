@@ -28,18 +28,28 @@ span {
     border-bottom-left-radius: 24px;
 }
 
-.openSearchContainer input:nth-of-type(2) {
-    border-top-right-radius: 24px;
-    border-bottom-right-radius: 24px;
-}
-
+ 
 .openSearchContainer button {
     background-color: transparent;
     border: none;
     outline: none;
-    transform: translateX(-60px);
+    /* transform: translateX(30px); */
 }
 
+summary {
+  border: .5px solid rgba(128, 128, 128, 0.164);
+  width: 300px;
+  border-radius: 25px;
+}
+summary p {
+  margin-left: 16px;
+}
+summary::-webkit-details-marker { 
+  visibility: hidden;
+}
+.open {
+  border: transparent;
+}
 .span {
     font-style: normal;
     font-weight: bold;
@@ -74,15 +84,15 @@ img {
   }
   
   
-  svg {
-    width: 1.2rem;
-    height: 1.2rem;
+ button svg {
+    width: 2rem;
+    height: 2rem;
   }
   
   .star, 
   .room-desc,
   .room-desc > div,
-  .fieldset,
+  .search--container,
   .logo,
   .form--header {
     display: flex;
@@ -96,12 +106,12 @@ img {
     justify-content: space-between;
   }
   
-  .fieldset,
+  .search--container,
   .logo {
     align-items: center;
   }
   
-  .fieldset {
+  .search--container {
     border: none;
     box-shadow: 1px 1px 5px #f2f2f2;
     border-radius: 16px;
