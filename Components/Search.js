@@ -1,5 +1,6 @@
 import React from 'react'  
 import GuestsButtonsComponents from './guestsButtonComponents';
+import Select from './Select';
 
 export default function SearchComponent(props) { 
   return (
@@ -9,7 +10,7 @@ export default function SearchComponent(props) {
         <div className="input--container">
           <input type="text" className="city--input" placeholder="Helsinki, Finland"/>
           <details>
-            <summary>Add guests
+            <summary className="summary--open">Add guests
               <p>4 Guests</p>
             </summary>
             <div>
@@ -25,19 +26,12 @@ export default function SearchComponent(props) {
                 </div>
             </div>
           </details>
-          <select onChange={props.handleChange} size="5">
-            <option value="helsinki"> 
-              Helsinki, Finland
-            </option>
-            <option value="turku">Turku, Finland</option>
-            <option value="oulu">Oulu, Finland</option>
-            <option value="vaasa">Vaasa, Finland</option>
-          </select>
+          <Select handleChange={props.handleChange}/>
           </div>
         </label>
         <div>
           <details>
-            <summary>Add guests
+            <summary className="summary--hidden">Add guests
               <p>4 Guests</p>
             </summary>
             <div>

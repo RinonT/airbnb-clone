@@ -37,7 +37,8 @@ span {
 summary {
   border: .5px solid rgba(128, 128, 128, 0.164);
   width: 300px;
-  border-radius: 25px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px; 
 }
 
 summary p {
@@ -138,7 +139,6 @@ i {
 }
 
 .open:checked ~ .search-component > fieldset select {
-  display: flex;
   width: 50vw;
   height: 9rem;
   overflow: hidden;
@@ -149,11 +149,14 @@ i {
 }
 
 .city--input {
-  display: block;
+  display: block; 
+  width: 302px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 16px;
-  padding: 16px;
+  border: .5px solid rgba(128, 128, 128, 0.164);
+  box-sizing: border-box; 
+  padding: 32px;
 }
 
 
@@ -172,4 +175,12 @@ select option {
   padding-right: 48px;
   padding-left: 16px;
   cursor: text;
+}
+
+.summary--hidden {
+  visibility: hidden;
+}
+
+details[open] ~ select { 
+  display: none;
 }
