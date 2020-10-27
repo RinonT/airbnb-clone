@@ -1,12 +1,20 @@
 .list-container {
   max-width: 1114px;
   margin-left: auto;
-  margin-right: auto; 
+  margin-right: auto;
   grid-gap: 16px;
 }
 
 span {
   margin-right: 16px;
+}
+
+.active {
+  background-color: violet;
+}
+
+button {
+  cursor: pointer;
 }
 
 .openSearchContainer {
@@ -38,7 +46,7 @@ summary {
   border: .5px solid rgba(128, 128, 128, 0.164);
   width: 300px;
   border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px; 
+  border-bottom-right-radius: 16px;
 }
 
 summary p {
@@ -66,6 +74,10 @@ summary::-webkit-details-marker {
 .searchContainer {
   display: flex;
   flex-direction: column;
+}
+
+.add-guest--search {
+  padding-left: 32px;
 }
 
 .heading {
@@ -127,7 +139,20 @@ i {
   display: none;
 }
 
-.open:checked ~ .search-component {
+.form--header {
+  display: flex;
+  justify-content: space-between;
+}
+
+button.exit-search {
+  margin-right: 30px;
+  background-color: transparent;
+  border: none;
+  font-size: 32px;
+  outline: none;
+}
+
+.open:checked~.search-component {
   display: block;
   position: absolute;
   background-color: #ffffff;
@@ -138,27 +163,49 @@ i {
   height: 50vh;
 }
 
-.open:checked ~ .search-component > fieldset select {
-  width: 50vw;
-  height: 9rem;
+.open:checked~.search-component>fieldset select {
+  width: 100vw;
   overflow: hidden;
   border: none;
   flex-direction: row;
   justify-content: space-between;
   outline: none;
+  padding-left: 32px;
+}
+
+.search--button {
+  background: rgba(235, 87, 87, 0.9);
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 15px;
+  transform: translate(200%, -80px);
+  border-color: transparent;
+}
+
+option {
+  padding-top: 20px;
+  margin: 0;
+}
+
+option:last-of-type {
+  padding-bottom: 32px;
 }
 
 .city--input {
-  display: block; 
+  display: block;
   width: 302px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   border: 1px solid #000000;
   border: .5px solid rgba(128, 128, 128, 0.164);
-  box-sizing: border-box; 
+  box-sizing: border-box;
   padding: 32px;
 }
 
+fieldset {
+  padding: 0;
+  border: none;
+}
 
 select option {
   margin-bottom: 16px;
@@ -181,6 +228,64 @@ select option {
   visibility: hidden;
 }
 
-details[open] ~ select { 
+details {
+  background-color: white;
+}
+
+details[open]~select {
   display: none;
+}
+
+@media(min-width: 760px) {
+  .input--container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-areas: "location guest search-button--container" "select blank blank";
+  }
+
+  .city--input {
+    border: 1px solid #F2F2F2;
+    grid-area: location;
+    border-radius: 16px;
+  }
+
+  details {
+    grid-area: guest;
+  }
+
+  summary {
+    border-radius: 16px;
+  }
+  .search-button--container {
+    grid-area: search-button--container;
+    background-color: white;
+    /* border: .5px solid rgba(128, 128, 128, 0.164);
+    width: 300px;
+    border-radius: 16px; */
+  }
+
+  select {
+    grid-area: select;
+  }
+
+  .input-container {
+    background-color: white;
+  }
+
+  button.search--button {
+    transform: none;
+  }
+
+  .form--header {
+    padding: 40px;
+  }
+
+  button.exit-search {
+    display: none;
+  }
+
+  .form--header h4{
+    display: none;
+  }
+
 }

@@ -28528,15 +28528,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function SearchComponent(props) {
   return /*#__PURE__*/_react.default.createElement("form", {
     className: "search-component"
-  }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "form--header"
+  }, /*#__PURE__*/_react.default.createElement("h4", null, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "exit-search",
+    type: "button"
+  }, "\xD7")), /*#__PURE__*/_react.default.createElement("label", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "input--container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "input-container"
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     className: "city--input",
     placeholder: "Helsinki, Finland"
-  }), /*#__PURE__*/_react.default.createElement("details", null, /*#__PURE__*/_react.default.createElement("summary", {
+  })), /*#__PURE__*/_react.default.createElement("details", null, /*#__PURE__*/_react.default.createElement("summary", {
     className: "summary--open"
-  }, "Add guests", /*#__PURE__*/_react.default.createElement("p", null, "4 Guests")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, "Add guests", /*#__PURE__*/_react.default.createElement("p", null, "4 Guests")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "add-guest--search"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "adultsNumbers"
   }, /*#__PURE__*/_react.default.createElement("p", null, "adults"), /*#__PURE__*/_react.default.createElement("span", null, "Age 13 or above"), /*#__PURE__*/_react.default.createElement(_guestsButtonComponents.default, {
     incrementGuests: props.incrementAdults,
@@ -28550,7 +28559,12 @@ function SearchComponent(props) {
     person: props.children
   })))), /*#__PURE__*/_react.default.createElement(_Select.default, {
     handleChange: props.handleChange
-  }))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("details", null, /*#__PURE__*/_react.default.createElement("summary", {
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "search-button--container"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "search--button",
+    type: "button"
+  }, "Search")))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("details", null, /*#__PURE__*/_react.default.createElement("summary", {
     className: "summary--hidden"
   }, "Add guests", /*#__PURE__*/_react.default.createElement("p", null, "4 Guests")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "adultsNumbers"
@@ -28611,7 +28625,9 @@ function FormComponent(props) {
   }), /*#__PURE__*/_react.default.createElement("path", {
     d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z",
     fill: "#EB5757"
-  })))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+  })))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "search-component--container"
+  }, /*#__PURE__*/_react.default.createElement("input", {
     className: "open",
     type: "checkbox",
     id: "select"
@@ -28780,7 +28796,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53789" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50438" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
