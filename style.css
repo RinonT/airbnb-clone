@@ -9,10 +9,6 @@ span {
   margin-right: 16px;
 }
 
-.active {
-  background-color: violet;
-}
-
 button {
   cursor: pointer;
 }
@@ -155,7 +151,6 @@ button.exit-search {
 .open:checked~.search-component {
   display: block;
   position: absolute;
-  background-color: #ffffff;
   left: 0;
   right: 0;
   top: 0;
@@ -228,10 +223,6 @@ select option {
   visibility: hidden;
 }
 
-details {
-  background-color: white;
-}
-
 details[open]~select {
   display: none;
 }
@@ -241,51 +232,62 @@ details[open]~select {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     grid-template-areas: "location guest search-button--container" "select blank blank";
+    border-right: none;
   }
-
+  .input-container {
+    border: 1px solid #F2F2F2;
+    border-radius: 16px;
+    border-top-right-radius: unset;
+    border-bottom-right-radius: unset;
+    height: 76px;
+  }
+  .city--input, .search-button--container, summary {
+    width: 100%;
+  }
   .city--input {
     border: 1px solid #F2F2F2;
     grid-area: location;
     border-radius: 16px;
+    height: inherit;
   }
-
   details {
     grid-area: guest;
   }
-
   summary {
-    border-radius: 16px;
+    height: 76px;
+    border-radius: unset;
   }
   .search-button--container {
     grid-area: search-button--container;
     background-color: white;
-    /* border: .5px solid rgba(128, 128, 128, 0.164);
-    width: 300px;
-    border-radius: 16px; */
+    border: .5px solid rgba(128, 128, 128, 0.164);
+    height: 76px;
+    border-radius: 16px;
+    border-top-left-radius: unset;
+    border-bottom-left-radius: unset;
+    display: flex;
+    justify-content: center;
   }
-
   select {
     grid-area: select;
   }
-
-  .input-container {
-    background-color: white;
-  }
-
   button.search--button {
     transform: none;
+    margin: 16px;
   }
-
   .form--header {
     padding: 40px;
   }
-
   button.exit-search {
     display: none;
   }
-
-  .form--header h4{
+  .form--header h4 {
     display: none;
   }
-
+  fieldset {
+    background-color: white;
+  }
+  .open:checked~.search-component>fieldset select {
+    width: 50vw;
+  }
 }
